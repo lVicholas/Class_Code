@@ -1,11 +1,7 @@
 # Orriols Midterm
 
-## THIS LIKELY DIFFERS SLIGHTLY FROM SUBMITTED FILE
 
 # P3
-# Runtime for all the code in 
-# this question is about 4-5 mins
-
 library(pls)
 library(glmnet)
 
