@@ -18,6 +18,7 @@ test.x1  = data$x1[501:1000]
 test.x2  = data$x2[501:1000]
 test.y  = y[501:1000]
 
+
 prob = function(x1, x2){
   return (pnorm(.5*x1 - .4*x2))
 }
@@ -29,16 +30,16 @@ simpleClassify = function(x1,x2){
   return (y)
 }
 
-trainYhat = simpleClassify(train.x1,train.x2)
-testYhat = simpleClassify(test.x1, test.x2)
+trainYhat=simpleClassify(train.x1,train.x2)
+testYhat=simpleClassify(test.x1, test.x2)
 
-trainError = mean(trainYhat != train.y)
-testError = mean(testYhat != test.y)
+mean(trainYhat != train.y) # .328
+mean(testYhat != test.y) # .312
 
 set.seed(777)
 knn3 = knn(train=cbind(train.x1,train.x2), test=cbind(test.x1,test.x2), k=3, cl=train.y)
 knnPred = as.numeric(knn3) - 1
-mean(knnPred != test.y)
+mean(knnPred != test.y) # .386
 
 set.seed(777)
 rates=c()
@@ -52,14 +53,16 @@ for(i in 1:100){
   
 }
 ks = which(rates %in% sort(rates)[1:5]); ks
-rates[ks]
+rates[ks] # 41, 45, 85, 87, 97, 98
 plot(rates, xlab="k", ylab="Test Error Rate")
+# .318, .32, .316, .32, .32, .32
 
 conf.train=cbind(train.x1,train.x2,xrandom[1:500,])
 conf.test=cbind(test.x1,test.x2,xrandom[501:1000,])
 
+# Use knn with random noise inserted in data
 knnConf = knn(train=conf.train,test=conf.test,k=40,cl=train.y)
-mean(as.numeric(knnConf)-1 != test.y)
+mean(as.numeric(knnConf)-1 != test.y) # .422
 
 # P3
 library(ISLR)
