@@ -24,7 +24,7 @@ ggplot(data=train.p2, aes(x=X1,y=X2)) +
 
 pred.train1=predict.glm(mod1, newdata=train.p2[,-1], type="response")
 p1=as.numeric(pred.train1 >= .5)
-mean(p1 != train.p2[,1])
+mean(p1 != train.p2[,1]) # .33
 
 # mod2
 mod2=glm(Y~X1+I(X1**2)+X2+I(X2**2), family=binomial, data=train.p2)
@@ -39,7 +39,7 @@ ggplot(data=train.p2, aes(x=X1,y=X2)) +
 
 pred.train2=predict.glm(mod2, newdata=train.p2[,-1],type="response")
 p2=as.numeric(pred.train2 >= .5)
-mean(p != train.p2[,1])
+mean(p2 != train.p2[,1]) # .32
 
 # mod3
 mod3=lda(Y~X1+X2, data=train.p2)
