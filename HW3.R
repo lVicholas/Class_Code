@@ -25,6 +25,7 @@ gamma=c()
 trainError=c()
 testError=c()
 
+# Fit SVMs with radial kernel
 for(i in 1:length(G)) {
   
   tune = tune(svm, y~., data=train, kernel="radial",
@@ -109,7 +110,6 @@ for (i in 1:100){
   
   set.seed(sqrt(3) * i)
   
-  # Had QDA rank deficiencies with set.seed(1.618 * i)
   # Runtime is about 10 mins
   
   s=sort(sample(1:nrow(d), size=25))
@@ -236,6 +236,7 @@ for (i in 1:1000) {
   S[2] = S[2] + as.numeric(X[99]-1.96*SE<9.9 & 9.9<X[99]+1.96*SE)
   
 }
+# Bootstrap estimates for 80th percentile of population
 # Percentile method
 S[1]/1000
 # Standard error method
