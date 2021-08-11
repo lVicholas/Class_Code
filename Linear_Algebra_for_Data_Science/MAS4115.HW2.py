@@ -4,6 +4,8 @@ def printMatrix(M):
         print(str(r))
     print("")
 
+# Forward-substitution to solve matrix equation Lx=b
+# where L is a lower-traingular matrix
 def forwardSub(L, b):
     x = []
     for i in range(len(b)):
@@ -11,14 +13,12 @@ def forwardSub(L, b):
         for j in range(i):
             x[i] = x[i] - (L[i][j] * x[j])
         x[i] = x[i]/L[i][i]
-    printMatrix(L)
-    print("Vector\n" + str(b) + "\n")
-    print("Result of forward substitution\n" + str(x))
     return x
     
+# Create simple matrix
+# Defined w/o numpy because we were instructed to not use numpy
 
 L = []
-
 for i in range(1,6):
     r = []
     for j in range(1,6):
@@ -32,4 +32,7 @@ b = []
 for i in range(1,6):
     b.append(i*i)
 
-forwardSub(L, b)
+x=forwardSub(L, b)
+printMatrix(L)
+print('Vector b\n'+str(b))
+print('Result of forward substitution\n'+str(x))
