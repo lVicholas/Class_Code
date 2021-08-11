@@ -8,4 +8,3 @@ Regression Trees, Generalized Additive Models.
 STATISTICAL_LEARNING_IN_PYTHON
 Python versions of scripts from STATISTICAL_LEARNING_IN_R folder. These scripts include MUCH MORE (e.g. graphs, further analysis) than their R-counterparts. Some 
 Jupyter notebooks for the scripts are also included.
-
